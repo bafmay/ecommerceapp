@@ -13,7 +13,7 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.0
-  flutter_svg: ^0.17.4
+  flutter_svg: ^0.18.0
   provider: ^4.3.1
 
 dev_dependencies:

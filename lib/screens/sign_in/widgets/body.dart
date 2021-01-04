@@ -1,4 +1,6 @@
+import 'package:ecommerceapp/constants.dart';
 import 'package:ecommerceapp/screens/sign_in/widgets/social_card.dart';
+import 'package:ecommerceapp/screens/sign_up/sign_up_screen.dart';
 import 'package:ecommerceapp/widgets/no_account_text.dart';
 import 'package:flutter/material.dart';
 
@@ -18,14 +20,7 @@ class Body extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: SizeConfig.screenHeight * 0.04),
-                Text(
-                  "Welcome Back",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: getProportionateScreenWidth(28),
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                Text("Welcome Back", style: headingStyle),
                 Text(
                   "Sign in with your email and password \nor continue with social media",
                   textAlign: TextAlign.center,
@@ -51,7 +46,9 @@ class Body extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: getProportionateScreenHeight(20)),
-                NotAccountText(press: () {}),
+                NotAccountText(
+                    press: () =>
+                        Navigator.pushNamed(context, SignUpScreen.routeName)),
                 SizedBox(height: getProportionateScreenHeight(20)),
               ],
             ),

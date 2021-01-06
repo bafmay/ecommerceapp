@@ -59,7 +59,10 @@ class _SignFormState extends State<SignForm> {
             press: () {
               if (_formKey.currentState.validate()) {
                 _formKey.currentState.save();
-                Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+                FocusScope.of(context).unfocus();
+                Future.delayed(Duration(seconds: 5), () {
+                  Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+                });
               }
             },
           )
@@ -90,8 +93,9 @@ class _SignFormState extends State<SignForm> {
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: kPassNullError);
-        } else if (value.length >= 8) {
-          removeError(error: kShortPassError);
+          if (value.length >= 8) {
+            removeError(error: kShortPassError);
+          }
         }
       },
       validator: (value) {

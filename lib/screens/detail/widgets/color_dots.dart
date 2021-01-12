@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:ecommerceapp/models/Product.dart';
 import 'package:ecommerceapp/widgets/rounded_icon_button.dart';
 import 'package:flutter/material.dart';
@@ -5,24 +7,37 @@ import 'package:flutter/material.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
 
-class ColorDots extends StatelessWidget {
+class ColorDots extends StatefulWidget {
   const ColorDots({Key key, @required this.product}) : super(key: key);
 
   final Product product;
 
   @override
+  _ColorDotsState createState() => _ColorDotsState();
+}
+
+class _ColorDotsState extends State<ColorDots> {
+  int selectedColor = 2;
+  @override
   Widget build(BuildContext context) {
-    int selectedColor = 0;
     return Padding(
       padding:
           EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
       child: Row(
         children: [
           ...List.generate(
-            product.colors.length,
-            (index) => ColorDot(
-              color: product.colors[index],
-              isSelected: selectedColor == index,
+            widget.product.colors.length,
+            (index) => GestureDetector(
+              onTap: () {
+                log("press");
+                setState(() {
+                  selectedColor = index;
+                });
+              },
+              child: ColorDot(
+                color: widget.product.colors[index],
+                isSelected: selectedColor == index,
+              ),
             ),
           ),
           Spacer(),

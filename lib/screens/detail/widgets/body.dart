@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/models/Product.dart';
+import 'package:ecommerceapp/screens/cart/cart_screen.dart';
 import 'package:ecommerceapp/size_config.dart';
 import 'package:ecommerceapp/widgets/default_button.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +46,8 @@ class Body extends StatelessWidget {
                           ),
                           child: DefaultButton(
                             text: "Add to Cart",
-                            press: () {},
+                            press: () => Navigator.pushNamed(
+                                context, CartScreen.routeName),
                           ),
                         ),
                       )
